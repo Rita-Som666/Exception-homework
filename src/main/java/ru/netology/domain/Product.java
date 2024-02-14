@@ -1,4 +1,5 @@
 package ru.netology.domain;
+
 import java.util.Objects;
 
 public class Product {
@@ -10,11 +11,11 @@ public class Product {
         return id;
     }
 
-    public String getTitle(){
+    public String getTitle() {
         return title;
     }
 
-    public void setTitle(){
+    public void setTitle() {
         this.title = title;
     }
 
@@ -46,6 +47,4 @@ public class Product {
         return Objects.hash(id, title, price);
     }
 
-    // геттеры + сеттеры
-    // на id только геттер — пусть будет неизменяемым для товара
 }
