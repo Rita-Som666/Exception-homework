@@ -1,8 +1,11 @@
+package ru.netology.domain;
+
 public class ShopRepository {
     private Product[] products = new Product[0];
 
     /**
      * Вспомогательный метод для имитации добавления элемента в массив
+     *
      * @param current — массив, в который мы хотим добавить элемент
      * @param product — элемент, который мы хотим добавить
      * @return — возвращает новый массив, который выглядит, как тот, что мы передали,
@@ -19,6 +22,7 @@ public class ShopRepository {
 
     /**
      * Метод добавления товара в репозиторий
+     *
      * @param product — добавляемый товар
      */
     public void add(Product product) {
@@ -31,6 +35,7 @@ public class ShopRepository {
 
     // Этот способ мы рассматривали в теории в теме про композицию
     public void remove(int id) {
+
         Product[] tmp = new Product[products.length - 1];
         int copyToIndex = 0;
         for (Product product : products) {
@@ -42,6 +47,7 @@ public class ShopRepository {
         products = tmp;
     }
 
+
     public Product findById(int ID) {
         for (Product product : products) {
             if (product.getId() == ID) {
@@ -51,7 +57,10 @@ public class ShopRepository {
         return null;
     }
 
-    public void removeById(int id){
-       findById(id);
+    public void removeById(int id) {
+        if (findById(id) == null) {
+            throw new NotFoundException("ID" + id + "не найден");
+        }
+        remove(id);
     }
 }
